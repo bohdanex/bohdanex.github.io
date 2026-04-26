@@ -1,0 +1,29 @@
+---
+interface Props {
+	startups: { name: string; role?: string; status?: string; description: string; links?: any[] }[];
+}
+const { startups } = Astro.props;
+---
+<section class="mb-24">
+	<h2 class="text-3xl font-bold tracking-tight mb-8">Startups</h2>
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		{startups.map(startup => (
+			<article class="p-8 bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl hover:border-emerald-500/40 hover:from-white/[0.08] transition-all duration-300 group flex flex-col">
+				<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4">
+					<div>
+						<h3 class="text-2xl font-semibold mb-1 text-white group-hover:text-emerald-300 transition-colors">{startup.name}</h3>
+						{startup.role && <p class="text-emerald-500/80 text-sm font-medium">{startup.role}</p>}
+					</div>
+					{startup.status && (
+						<span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-slate-300 font-medium whitespace-nowrap self-start">
+							{startup.status}
+						</span>
+					)}
+				</div>
+				<p class="text-slate-400 leading-relaxed mt-2 flex-1">
+					{startup.description}
+				</p>
+			</article>
+		))}
+	</div>
+</section>

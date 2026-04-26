@@ -1,0 +1,29 @@
+---
+interface Props {
+  education: {
+    institution: string;
+    details: { text: string; period: string }[];
+  }[];
+}
+const { education } = Astro.props;
+---
+<section class="mb-24">
+	<h2 class="text-3xl font-bold tracking-tight mb-8">Education & Certificates</h2>
+	<div class="space-y-6">
+		{education.map(item => (
+			<div class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-emerald-500 before:rounded-full">
+				<h3 class="text-xl font-medium text-white mb-2">{item.institution}</h3>
+				<ul class="space-y-3">
+					{item.details.map(detail => (
+						<li class="flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-4 text-sm group">
+							<span class="text-slate-300 leading-relaxed">{detail.text}</span>
+							<span class="text-emerald-500/70 font-mono text-xs px-2.5 py-1 bg-emerald-500/10 rounded-md border border-emerald-500/20 whitespace-nowrap self-start md:self-auto group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-colors">
+								{detail.period}
+							</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		))}
+	</div>
+</section>

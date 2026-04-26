@@ -1,5 +1,6 @@
 ---
 import type { EducationItem } from '../types';
+import '../styles/education.css';
 
 interface Props {
   education: EducationItem[];
@@ -10,7 +11,7 @@ const { education } = Astro.props;
 	<h2 class="text-3xl font-bold tracking-tight mb-8">Education & Certificates</h2>
 	<div class="space-y-6">
 		{education.map(item => (
-			<div class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-emerald-500 before:rounded-full">
+			<div class="education-block relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-emerald-500 before:rounded-full">
 				<h3 class="text-xl font-medium text-white mb-2">{item.institution}</h3>
 				<ul class="space-y-3">
 					{item.details.map(detail => (
@@ -26,3 +27,23 @@ const { education } = Astro.props;
 		))}
 	</div>
 </section>
+
+<script>
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('animate-in');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.education-block').forEach((block) => {
+		observer.observe(block);
+	});
+</script>

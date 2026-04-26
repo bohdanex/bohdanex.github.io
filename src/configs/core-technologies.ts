@@ -1,4 +1,6 @@
-export const coreTechnologies = [
+import type { CoreTechnology } from "../types";
+
+export const coreTechnologies: CoreTechnology[] = [
   { name: ".NET", icon: "https://cdn.simpleicons.org/dotnet" },
   { name: "Angular", icon: "https://cdn.simpleicons.org/angular/pink" },
   { name: "React", icon: "https://cdn.simpleicons.org/react" },

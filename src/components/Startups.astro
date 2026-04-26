@@ -1,6 +1,8 @@
 ---
+import type { Startup } from '../types';
+
 interface Props {
-	startups: { name: string; role?: string; status?: string; description: string; links?: any[] }[];
+	startups: Startup[];
 }
 const { startups } = Astro.props;
 ---
@@ -8,7 +10,7 @@ const { startups } = Astro.props;
 	<h2 class="text-3xl font-bold tracking-tight mb-8">Startups</h2>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 		{startups.map(startup => (
-			<article class="p-8 bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl hover:border-emerald-500/40 hover:from-white/[0.08] transition-all duration-300 group flex flex-col">
+			<article class="p-8 bg-linear-to-b from-white/4 to-transparent border border-white/10 rounded-3xl hover:border-emerald-500/40 hover:from-white/8 transition-all duration-300 group flex flex-col">
 				<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4">
 					<div>
 						<h3 class="text-2xl font-semibold mb-1 text-white group-hover:text-emerald-300 transition-colors">{startup.name}</h3>

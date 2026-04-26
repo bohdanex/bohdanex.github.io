@@ -1,9 +1,8 @@
 ---
+import type { EducationItem } from '../types';
+
 interface Props {
-  education: {
-    institution: string;
-    details: { text: string; period: string }[];
-  }[];
+  education: EducationItem[];
 }
 const { education } = Astro.props;
 ---

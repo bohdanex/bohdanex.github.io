@@ -1,9 +1,8 @@
 ---
+import type { SkillGroup } from '../types';
+
 interface Props {
-  skills: { 
-    category: string; 
-    items: (string | { name: string; highlight?: boolean })[] 
-  }[];
+  skills: SkillGroup[];
 }
 const { skills } = Astro.props;
 ---
@@ -11,7 +10,7 @@ const { skills } = Astro.props;
 	<h2 class="text-3xl font-bold tracking-tight mb-8">Expertise</h2>
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 		{skills.map(group => (
-			<div class="p-6 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.04] hover:border-emerald-500/30 hover:-translate-y-1 transition-all duration-300 group">
+			<div class="p-6 bg-white/2 border border-white/5 rounded-2xl hover:bg-white/4 hover:border-emerald-500/30 hover:-translate-y-1 transition-all duration-300 group">
 				<h3 class="text-emerald-400 font-medium mb-4 group-hover:text-emerald-300 transition-colors">{group.category}</h3>
 				<ul class="space-y-2">
 					{group.items.map(item => {

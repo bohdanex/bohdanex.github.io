@@ -1,4 +1,6 @@
-export const education = [
+import type { EducationItem } from "../types";
+
+export const education: EducationItem[] = [
   {
     institution: "Uzhhorod National University",
     details: [

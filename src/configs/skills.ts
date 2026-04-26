@@ -1,6 +1,6 @@
-export type SkillItem = string | { name: string; highlight: boolean };
+import type { SkillGroup } from "../types";
 
-export const skills: { category: string; items: SkillItem[] }[] = [
+export const skills: SkillGroup[] = [
   { category: "Frontend", items: [{ name: "Angular", highlight: true }, { name: "React", highlight: true }, "NextJS", "LitJS", "SolidJS"] },
   { category: "Backend", items: [{ name: ".NET", highlight: true }, "NodeJS", "NestJS"] },
   { category: "Cloud & Databases", items: ["AWS", "Azure", { name: "Supabase", highlight: true }, "PostgreSQL"] },

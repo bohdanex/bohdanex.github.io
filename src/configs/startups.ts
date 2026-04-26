@@ -1,4 +1,6 @@
-export const startups = [
+import type { Startup } from "../types";
+
+export const startups: Startup[] = [
   {
     name: "Maplyx",
     role: "Founder & Lead Architect",

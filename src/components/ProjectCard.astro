@@ -1,22 +1,23 @@
 ---
-interface Props {
-	name: string;
-	description?: string;
-	stack: string[];
-	links?: { text: string; url: string }[];
-	company?: string | { name: string; logo: string };
-}
+import type { Project } from '../types';
+
+interface Props extends Project {}
 const { name, description, stack, links, company } = Astro.props;
 
 // Helper to handle company logic
 const companyName = typeof company === 'string' ? company : company?.name;
 const companyLogo = typeof company === 'object' ? company?.logo : null;
+
+// Check if the component has children passed into it
+const hasContent = Astro.slots.has('default');
+const Wrapper = hasContent ? 'details' : 'div';
+const Header = hasContent ? 'summary' : 'div';
 ---
-<details class="group bg-white/[0.01] border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02]">
-	<summary class="p-6 cursor-pointer list-none hover:bg-white/[0.03] hover:border-emerald-500/20 transition-all duration-300 flex flex-col md:flex-row md:items-start justify-between gap-4">
+<Wrapper class={`group bg-white/1 border border-white/5 rounded-xl transition-all duration-300 ${hasContent ? '[&_summary::-webkit-details-marker]:hidden open:bg-white/2' : 'hover:bg-white/2 hover:border-white/10'}`}>
+	<Header class={`p-6 flex flex-col md:flex-row md:items-start justify-between gap-4 ${hasContent ? 'cursor-pointer list-none hover:bg-white/3 hover:border-emerald-500/20 rounded-xl transition-all duration-300' : ''}`}>
 		<div class="flex-1">
 			<div class="flex items-center flex-wrap gap-3 mb-2">
-				<h3 class="text-xl font-medium text-white group-hover:text-emerald-300 transition-colors">{name}</h3>
+				<h3 class={`text-xl font-medium text-white transition-colors ${hasContent ? 'group-hover:text-emerald-300' : ''}`}>{name}</h3>
 				{companyName && (
 					<div class="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-medium text-emerald-300">
 						{companyLogo && <img src={companyLogo} alt={companyName} class="w-4 h-4 object-contain rounded-full bg-white/10" />}
@@ -37,22 +38,24 @@ const companyLogo = typeof company === 'object' ? company?.logo : null;
 			{links && (
 				<div class="flex gap-3 mr-2">
 					{links.map(link => (
-						<a href={link.url} class="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors px-4 py-2 bg-emerald-500/10 rounded-lg hover:bg-emerald-500/20" onclick="event.stopPropagation()">
+						<a href={link.url} target="_blank" class="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors px-4 py-2 bg-emerald-500/10 rounded-lg hover:bg-emerald-500/20" onclick="event.stopPropagation()">
 							{link.text} &rarr;
 						</a>
 					))}
 				</div>
 			)}
-			<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-colors ml-auto md:ml-0">
-				<svg class="w-5 h-5 transform transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-				</svg>
-			</div>
+			{hasContent && (
+				<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-colors ml-auto md:ml-0">
+					<svg class="w-5 h-5 transform transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</div>
+			)}
 		</div>
-	</summary>
-	<div class="p-6 pt-2 border-t border-white/5 text-slate-300 animate-in fade-in duration-500">
-		<slot>
-			<p class="text-sm text-slate-500 italic">More details coming soon...</p>
-		</slot>
-	</div>
-</details>
+	</Header>
+	{hasContent && (
+		<div class="p-6 pt-2 border-t border-white/5 text-slate-300 animate-in fade-in duration-500">
+			<slot />
+		</div>
+	)}
+</Wrapper>

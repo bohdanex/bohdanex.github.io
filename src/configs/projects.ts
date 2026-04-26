@@ -1,4 +1,6 @@
-export const projects = [
+import type { Project } from "../types";
+
+export const projects: Project[] = [
   {
     name: "3D Property App & Walkthrough Creator",
     description: "WebGL application optimization: implemented WebGPU compute shaders, instance meshes, texture atlasing, and deep VRAM profiling to reduce memory consumption.",
@@ -12,16 +14,16 @@ export const projects = [
   },
   {
     name: "Medical App",
-    description: "Developed a secure, scalable healthcare platform with integrated payment processing and robust MSSQL database architecture.",
+    description: "Mainteined a secure, scalable healthcare platform with integrated payment processing and robust MSSQL database architecture.",
     stack: ["React", ".NET Framework", "MSSQL", "Payment Gateways"],
-    company: null,
+    company: undefined,
     links: []
   },
   {
     name: "Brick Shift",
     description: "Developed a 2D Unity game with a custom tween engine, ensuring high-performance rendering and a polished UI/UX.",
     stack: ["Unity", "C#", "Custom Tween Engine"],
-    company: null,
+    company: undefined,
     links: []
   },
   {
@@ -35,14 +37,14 @@ export const projects = [
     name: "Employee Management App",
     description: "Built cross-platform desktop applications (Windows/macOS) focusing on native component development for optimized performance.",
     stack: ["React Native for Desktop", "Native Modules", "Swift", "Objective-C", "WPF"],
-    company: null,
+    company: undefined,
     links: []
   },
   {
     name: "Web Mini-Blender",
     description: "Authored a 3D geometry generation library featuring historical state management (Undo/Redo), automated normal calculations, and texture mapping.",
     stack: ["WebGL", "Three.js", "Design Patterns", "Linear Algebra"],
-    company: null,
+    company: undefined,
     links: []
   }
 ];

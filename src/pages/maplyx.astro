@@ -1,0 +1,305 @@
+---
+// src/pages/maplyx.astro
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <SEO 
+        title="Maplyx | Interactive Mental Map Course Creator"
+        description="Experience the future of EdTech with Maplyx. A linear-spined mind map editor for building structured interactive courses with real-time collaboration and AI integration."
+        keywords="Maplyx, Mind Map Editor, EdTech SaaS, Course Builder, WebGL, Angular, .NET 10, Real-time Learning"
+        canonical="https://bohdanex.github.io/maplyx"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="bg-slate-50 text-slate-900 font-['Inter',sans-serif] antialiased selection:bg-blue-500/20 selection:text-blue-900">
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 z-50 flex items-center px-6">
+        <div class="logo-placeholder flex items-center gap-2 text-blue-600 font-bold text-xl tracking-tight">
+            <img src="/maplyx.svg" alt="Maplyx Logo" class="h-10 w-10" />
+            Maplyx
+        </div>
+        <div class="ml-auto flex items-center gap-4">
+            <a href="/" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Back to Portfolio</a>
+        </div>
+    </header>
+
+    <div class="max-w-[90rem] mx-auto flex pt-16">
+        
+        <!-- Sidebar -->
+        <aside class="hidden lg:block w-64 shrink-0 fixed top-16 bottom-0 overflow-y-auto border-r border-slate-200 px-6 py-10 bg-slate-50/50">
+            <nav class="space-y-1">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Contents</p>
+                <a href="#hero" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">Overview</a>
+                <a href="#tech-stack" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">Technology Stack</a>
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-8 mb-4">Features</p>
+                <a href="#map-editor" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">The Map Editor</a>
+                <a href="#collaboration" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">Real-Time Collaboration</a>
+                <a href="#student-experience" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">Student Experience</a>
+                <a href="#workspace" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">Workspace & Access</a>
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-8 mb-4">Roadmap</p>
+                <a href="#roadmap" class="scrollspy-link block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 border-l-2 border-transparent transition-all">Project Roadmap</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:pl-64">
+            <div class="max-w-4xl mx-auto px-6 lg:px-12 py-12 lg:py-20 space-y-24">
+
+                <!-- Hero Section -->
+                <section id="hero" class="scrollspy-section pt-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-medium border border-blue-100 mb-6">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        EdTech SaaS
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">Interactive Course Architect</h1>
+                    <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed">
+                        A next-generation educational platform replacing linear courses with interactive mental maps.
+                    </p>
+                    <div class="aspect-video bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center shadow-inner overflow-hidden relative group">
+                        <video src="/maplyx/main-demo.webm" autoplay loop muted class="w-full h-full object-cover" />
+                    </div>
+                </section>
+
+                <!-- Technology Stack -->
+                <section id="tech-stack" class="scrollspy-section scroll-mt-24">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200">Technology Stack</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500 shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
+                                </div>
+                                <h3 class="font-semibold text-slate-900 leading-tight">Backend</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">.NET 10</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Vertical Slice</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">MediatR</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Carter</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">FluentValidation</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500 shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                                </div>
+                                <h3 class="font-semibold text-slate-900 leading-tight">Frontend</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Angular</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Signals</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Signal Store</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Standalone</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Modern Animations</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500 shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                                </div>
+                                <h3 class="font-semibold text-slate-900 leading-tight">Infrastructure</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Supabase</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-md">Centrifugo</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <div class="h-px bg-slate-200"></div>
+
+                <!-- Features -->
+                <section id="map-editor" class="scrollspy-section scroll-mt-24">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">The Map Editor</h2>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            Mental map builder for course creation, quiz generation, and topic (node) styling.
+                        </p>
+                    </div>
+                    <div class="aspect-video bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center shadow-inner overflow-hidden relative">
+                        <video src="/maplyx/details-demo.webm" autoplay loop muted class="w-full h-full object-cover" />
+                    </div>
+                </section>
+
+                <section id="collaboration" class="scrollspy-section scroll-mt-24">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">Real-Time Collaboration</h2>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            Real-time cursor tracking and chat, powered by Centrifugo.
+                        </p>
+                    </div>
+                    <div class="aspect-video bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center shadow-inner overflow-hidden relative">
+                        <video src="/maplyx/realtime-chat-demo.webm" autoplay loop muted class="w-full h-full object-cover" />
+                    </div>
+                </section>
+
+                <section id="student-experience" class="scrollspy-section scroll-mt-24">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">Student Experience</h2>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            Dedicated student view, course publishing, and access management.
+                        </p>
+                    </div>
+                    <div class="bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center shadow-inner overflow-hidden relative">
+                        <img src="/maplyx/publish-map-modal.webp" alt="Student View" class="w-full h-full object-cover" />
+                    </div>
+                </section>
+
+                <section id="workspace" class="scrollspy-section scroll-mt-24">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">Workspace & Access Control</h2>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            Organizations management, role-based email invitations (editors/students), student group creation, and assigning groups to published courses. User profile editing.
+                        </p>
+                    </div>
+                    <div class="aspect-video bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center shadow-inner overflow-hidden relative">
+                        <video src="/maplyx/organizations-demo.webm" autoplay loop muted class="w-full h-full object-cover" />
+                    </div>
+                </section>
+
+                <div class="h-px bg-slate-200"></div>
+
+                <!-- Roadmap -->
+                <section id="roadmap" class="scrollspy-section scroll-mt-24">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-8">Roadmap</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white border border-slate-200 rounded-2xl p-8 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                MVP Targets
+                            </h3>
+                            <ul class="space-y-3 text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                                    Student progress tracker
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                                    List-based course structure view
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                                    Dashboard completion
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                                    Manual node connection mapping (transitioning from pure auto-layout)
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                                    Level editor
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                                    Load testing & deployment setup
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white border border-slate-200 rounded-2xl p-8 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500"></div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                Post-MVP Vision
+                            </h3>
+                            <ul class="space-y-3 text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>
+                                    AI-powered map creation and editing
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>
+                                    Subscription/payment integration
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>
+                                    Advanced real-time communication via Castan integration
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="text-gray-500 text-sm py-8 border-t border-gray-100 text-center mt-24">
+                    <p>© Maplyx 2026. Built and Developed by Bohdan Mykhats. All Rights Reserved.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function initScrollSpy() {
+            const sections = document.querySelectorAll('.scrollspy-section');
+            const navLinks = document.querySelectorAll('.scrollspy-link');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observerCallback = (entries: IntersectionObserverEntry[]) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        
+                        // Remove active classes from all links
+                        navLinks.forEach((link) => {
+                            link.classList.remove('border-blue-500', 'text-blue-600', 'bg-blue-50');
+                            link.classList.add('border-transparent', 'text-slate-600');
+                        });
+
+                        // Add active class to current link
+                        const activeLink = document.querySelector(`.scrollspy-link[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.remove('border-transparent', 'text-slate-600');
+                            activeLink.classList.add('border-blue-500', 'text-blue-600', 'bg-blue-50/50');
+                        }
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            sections.forEach((sec) => observer.observe(sec));
+            
+            // Smooth scrolling for sidebar links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    if (!href || !href.startsWith('#')) return;
+                    
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', initScrollSpy);
+        
+        // Handle view transitions if enabled
+        document.addEventListener('astro:after-swap', initScrollSpy);
+    </script>
+</body>
+</html>

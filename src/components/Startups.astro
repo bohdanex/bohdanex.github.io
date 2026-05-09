@@ -25,6 +25,16 @@ const { startups } = Astro.props;
 				<p class="text-slate-400 leading-relaxed mt-2 flex-1">
 					{startup.description}
 				</p>
+				{startup.links && startup.links.length > 0 && (
+					<div class="mt-6 flex flex-wrap gap-4">
+						{startup.links.map(link => (
+							<a href={link.url} class="text-sm font-medium text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 transition-colors">
+								{link.text}
+								<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+							</a>
+						))}
+					</div>
+				)}
 			</article>
 		))}
 	</div>

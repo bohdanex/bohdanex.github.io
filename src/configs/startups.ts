@@ -6,7 +6,7 @@ export const startups: Startup[] = [
     role: "Founder & Lead Architect",
     status: "In Development",
     description: "Educational SaaS platform and real-time mind map editor. Built core real-time collaboration engine utilizing Centrifugo and Supabase.",
-    links: []
+    links: [{ text: "View Showcase", url: "/maplyx" }]
   },
   {
     name: "Castan",

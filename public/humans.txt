@@ -1,0 +1,7 @@
+/* TEAM */
+Name: Bohdan Mykhats
+Role: Lead Developer & Architect
+Location: Ukraine
+
+/* SITE */
+Tech Stack: Astro, Tailwind CSS, WebGL, .NET 10

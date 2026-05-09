@@ -1,0 +1,80 @@
+---
+import ImageCarousel from '../ImageCarousel.astro';
+
+const screenshots = [
+  { src: '/propall/blender/extrude.webp', alt: 'Extrude Tool' },
+  { src: '/propall/blender/curve-cut.webp', alt: 'Curve Cut Tool' },
+  { src: '/propall/blender/dome.webp', alt: 'Dome Generation' },
+  { src: '/propall/blender/face-slice.webp', alt: 'Face Slice & Material Editor' },
+];
+---
+
+<div class="mt-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Core Capabilities
+            </div>
+            
+            <ul class="space-y-6">
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 11-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Advanced Modeling Tools</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Support for primitives (box, cylinder, custom polygons), Extrude/Intrude, Frame Extrude, Face Inset, Face/Curve Cut, and Dome generation.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Material & Texture Editor</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Built-in material editor allowing face splitting and individual per-face texture assignment.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m12 4a2 2 0 100-4m0 4a2 2 0 110-4m-6 0a2 2 0 100-4m0 4a2 2 0 110-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Architecture & UX</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Intuitive interface with interactive 3D gizmos and tooltips. Powered by a strict Command Pattern architecture ensuring reliable Undo/Redo functionality.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Cloud Integration</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Seamless cloud sync for saving and loading complete 3D scenes.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <ImageCarousel id="blender" images={screenshots} />
+    </div>
+</div>

@@ -1,0 +1,212 @@
+---
+interface Props {
+  id: string;
+  images: { src: string; alt: string }[];
+}
+const { id, images } = Astro.props;
+---
+<div class="relative group/carousel image-carousel-wrapper" data-carousel-id={id}>
+  <div class="aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40 relative shadow-2xl">
+      <div class="flex transition-transform duration-700 ease-[cubic-bezier(0.45,0,0.55,1)] h-full carousel-track">
+          {images.map((img) => (
+              <div class="min-w-full h-full relative cursor-zoom-in overflow-hidden group/img carousel-slide" data-src={img.src} data-alt={img.alt}>
+                  <img src={img.src} alt={img.alt} class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                      <div class="translate-y-4 group-hover/carousel:translate-y-0 transition-transform duration-500">
+                          <span class="text-sm text-emerald-300 font-semibold tracking-wide uppercase">{img.alt}</span>
+                          <div class="h-0.5 w-12 bg-emerald-500 mt-2"></div>
+                      </div>
+                  </div>
+              </div>
+          ))}
+      </div>
+      
+      <div class="absolute inset-y-0 left-0 flex items-center px-4">
+          <button class="carousel-prev w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-all hover:bg-emerald-500/20 hover:border-emerald-500/40 hover:scale-110 active:scale-95">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center px-4">
+          <button class="carousel-next w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-all hover:bg-emerald-500/20 hover:border-emerald-500/40 hover:scale-110 active:scale-95">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </button>
+      </div>
+
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 carousel-dots">
+          {images.map((_, i) => (
+              <button class={`carousel-dot w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-emerald-400 w-8' : 'bg-white/20 hover:bg-white/40'}`} data-index={i}></button>
+          ))}
+      </div>
+  </div>
+
+  <!-- Decorative Elements -->
+  <div class="absolute -top-4 -right-4 w-24 h-24 bg-emerald-500/10 blur-3xl rounded-full -z-10 animate-pulse"></div>
+  <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-emerald-500/5 blur-3xl rounded-full -z-10 animate-pulse" style="animation-delay: 1s"></div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id={`lightbox-${id}`} class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden flex-col items-center justify-center p-4 md:p-12 transition-all duration-500 opacity-0 lightbox-modal">
+    <button class="lightbox-close absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+    <div class="relative max-w-7xl w-full h-full flex items-center justify-center lightbox-content">
+        <img class="lightbox-img max-w-full max-h-full rounded-xl shadow-[0_0_50px_rgba(16,185,129,0.2)] border border-white/10 scale-95 transition-all duration-500 ease-out" src="" alt="Expanded screenshot" />
+        <div class="lightbox-caption absolute bottom-[-2rem] left-0 right-0 text-center text-slate-400 text-sm font-medium tracking-wide"></div>
+    </div>
+</div>
+
+<script>
+    function initCarousels() {
+        document.querySelectorAll('.image-carousel-wrapper').forEach((wrapper) => {
+            const wrapperElement = wrapper as HTMLElement;
+            if (wrapperElement.dataset.initialized) return;
+            wrapperElement.dataset.initialized = 'true';
+
+            const id = wrapperElement.dataset.carouselId;
+            const track = wrapperElement.querySelector('.carousel-track') as HTMLElement;
+            const dots = wrapperElement.querySelectorAll('.carousel-dot');
+            const slides = wrapperElement.querySelectorAll('.carousel-slide');
+            const nextBtn = wrapperElement.querySelector('.carousel-next');
+            const prevBtn = wrapperElement.querySelector('.carousel-prev');
+            
+            const lightbox = document.getElementById(`lightbox-${id}`);
+            const lightboxCloseBtn = lightbox?.querySelector('.lightbox-close');
+            const lightboxContent = lightbox?.querySelector('.lightbox-content');
+            const lightboxImg = lightbox?.querySelector('.lightbox-img') as HTMLImageElement;
+            const lightboxCaption = lightbox?.querySelector('.lightbox-caption');
+
+            const total = dots.length;
+            if (total === 0) return;
+
+            let currentIndex = 0;
+            let interval: ReturnType<typeof setInterval>;
+            let isHovered = false;
+            let isVisible = false;
+            let isOpen = true;
+
+            const details = wrapperElement.closest('details');
+            if (details) {
+                isOpen = details.open;
+                const mutationObserver = new MutationObserver(() => {
+                    if (isOpen !== details.open) {
+                        isOpen = details.open;
+                        updateAutoPlay();
+                    }
+                });
+                mutationObserver.observe(details, { attributes: true, attributeFilter: ['open'] });
+            }
+
+            function updateCarousel() {
+                if (!track) return;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.classList.add('bg-emerald-400', 'w-8');
+                        dot.classList.remove('bg-white/20');
+                    } else {
+                        dot.classList.remove('bg-emerald-400', 'w-8');
+                        dot.classList.add('bg-white/20');
+                    }
+                });
+            }
+
+            function updateAutoPlay() {
+                clearInterval(interval);
+                if (isOpen && isVisible && !isHovered) {
+                    interval = setInterval(() => {
+                        currentIndex = (currentIndex + 1) % total;
+                        updateCarousel();
+                    }, 6000);
+                }
+            }
+
+            nextBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % total;
+                updateCarousel();
+                updateAutoPlay();
+            });
+
+            prevBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + total) % total;
+                updateCarousel();
+                updateAutoPlay();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                    updateAutoPlay();
+                });
+            });
+
+            wrapperElement.addEventListener('mouseenter', () => {
+                isHovered = true;
+                updateAutoPlay();
+            });
+
+            wrapperElement.addEventListener('mouseleave', () => {
+                isHovered = false;
+                updateAutoPlay();
+            });
+
+            const openLightbox = (src: string, alt: string) => {
+                if (!lightbox || !lightboxImg) return;
+                
+                if (lightboxCaption) lightboxCaption.textContent = alt;
+                lightboxImg.src = src;
+                
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                lightbox.offsetHeight; // Force reflow
+                
+                lightbox.classList.add('flex', 'opacity-100');
+                setTimeout(() => {
+                    lightboxImg.classList.remove('scale-95', 'opacity-0');
+                    lightboxImg.classList.add('scale-100', 'opacity-100');
+                }, 50);
+            };
+
+            const closeLightbox = () => {
+                if (!lightbox || !lightboxImg) return;
+                
+                lightboxImg.classList.remove('scale-100', 'opacity-100');
+                lightboxImg.classList.add('scale-95', 'opacity-0');
+                lightbox.classList.remove('opacity-100');
+                
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    lightbox.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }, 500);
+            };
+
+            slides.forEach(slide => {
+                slide.addEventListener('click', () => {
+                    const src = (slide as HTMLElement).dataset.src;
+                    const alt = (slide as HTMLElement).dataset.alt;
+                    if (src && alt) openLightbox(src, alt);
+                });
+            });
+
+            lightboxCloseBtn?.addEventListener('click', closeLightbox);
+            lightbox?.addEventListener('click', closeLightbox);
+            lightboxContent?.addEventListener('click', (e) => e.stopPropagation());
+
+            const intersectionObserver = new IntersectionObserver((entries) => {
+                isVisible = entries[0].isIntersecting;
+                updateAutoPlay();
+            }, { threshold: 0.1 });
+
+            intersectionObserver.observe(wrapperElement);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        });
+    }
+
+    initCarousels();
+    document.addEventListener('astro:after-swap', initCarousels);
+</script>

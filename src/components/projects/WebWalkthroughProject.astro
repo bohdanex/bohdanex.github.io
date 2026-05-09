@@ -1,0 +1,79 @@
+---
+import ImageCarousel from '../ImageCarousel.astro';
+
+const screenshots = [
+  { src: '/propall/walkthrough/scene-1.webp', alt: 'Interactive 3D Walkthrough Scene 1' },
+  { src: '/propall/walkthrough/scene-2.webp', alt: 'Interactive 3D Walkthrough Scene 2' },
+];
+---
+
+<div class="mt-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Key Features
+            </div>
+            
+            <ul class="space-y-6">
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Cloud Infrastructure</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Architected a robust backend pipeline using AWS Lambda and a Node.js server with socket.io to handle real-time scene loading and synchronization from the cloud.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Cinematic Controls</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Developed tools for authorized users to place view points and configure complex animation parameters for scene presentations.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">Advanced Camera Systems</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Engineered three distinct mathematical camera controllers from scratch: Top-down, FPS (First-Person Shooter), and Orbital.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="group">
+                    <div class="flex gap-4">
+                        <div class="mt-1 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">WebXR Integration</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">Implemented full VR support, allowing end-users to experience the architectural walkthroughs immersively.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <ImageCarousel id="walkthrough" images={screenshots} />
+    </div>
+</div>

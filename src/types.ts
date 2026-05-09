@@ -8,6 +8,7 @@ export interface Project {
   stack: string[];
   company?: Company;
   links?: Link[];
+  isNDA?: boolean;
 }
 
 export interface Startup {

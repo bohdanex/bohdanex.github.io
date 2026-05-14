@@ -6,8 +6,8 @@ interface Props {
 }
 const { startups } = Astro.props;
 ---
-<section class="mb-24">
-	<h2 class="text-3xl font-bold tracking-tight mb-8">Startups</h2>
+<section id="startups" class="mb-24">
+	<h2 class="text-3xl font-bold tracking-tight mb-4">Startups</h2>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 		{startups.map(startup => (
 			<article class="p-8 bg-linear-to-b from-white/4 to-transparent border border-white/10 rounded-3xl hover:border-emerald-500/40 hover:from-white/8 transition-all duration-300 group flex flex-col">

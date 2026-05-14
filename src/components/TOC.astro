@@ -1,0 +1,132 @@
+---
+const sections = [
+  { id: 'about', label: 'About' },
+  { id: 'expertise', label: 'Expertise' },
+  { id: 'startups', label: 'Startups' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'rd', label: 'R&D' },
+  { id: 'open-source', label: 'Open Source' },
+  { id: 'education', label: 'Education' },
+];
+---
+
+<nav class="hidden xl:block fixed right-12 top-1/2 -translate-y-1/2 z-50">
+  <div class="flex flex-col items-end gap-6 relative">
+    <!-- Progress Line -->
+    <div class="absolute right-[7px] top-2 bottom-2 w-[2px] bg-white/10 rounded-full">
+      <div id="toc-progress-bar" class="w-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all duration-500 origin-top scale-y-0 h-full rounded-full"></div>
+    </div>
+
+    {sections.map((section) => (
+      <a
+        href={`#${section.id}`}
+        class="toc-item group flex items-center gap-4 text-right transition-all duration-300"
+        data-section={section.id}
+      >
+        <span class="toc-label opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-emerald-400 bg-[#0a0a0a]/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 pointer-events-none">
+          {section.label}
+        </span>
+        <div class="relative flex items-center justify-center">
+          <!-- Dot with background that masks the line -->
+          <div class="toc-dot w-4 h-4 rounded-full border-2 border-white/20 bg-[#0a0a0a] group-hover:border-emerald-500/50 transition-all duration-300 z-10"></div>
+          <div class="toc-glow absolute inset-0 bg-emerald-500 blur-md rounded-full opacity-0 scale-50 transition-all duration-500 group-[.active]:opacity-40 group-[.active]:scale-150"></div>
+        </div>
+      </a>
+    ))}
+
+    <!-- Download CV Button -->
+    <a 
+      href="/cv.pdf" 
+      download="Bohdan Mykhats - Senior Full-Stack Engineer CV.pdf"
+      class="mt-4 group flex items-center gap-4 text-right transition-all duration-300"
+      title="Download CV"
+    >
+      <span class="opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-emerald-500/20 pointer-events-none">
+        Download CV
+      </span>
+      <div class="w-4 h-4 flex items-center justify-center text-slate-400 group-hover:text-emerald-400 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </div>
+    </a>
+  </div>
+</nav>
+
+<style>
+  @reference "tailwindcss";
+
+  .toc-item.active .toc-dot {
+    @apply border-emerald-500 bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)];
+    transform: scale(1.2);
+  }
+  
+  .toc-item.active .toc-label {
+    @apply opacity-100 translate-x-0 text-emerald-400 border-emerald-500/30 bg-emerald-500/10;
+  }
+
+  /* Smooth scroll behavior is already in Layout.astro, but let's ensure it for the TOC */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  function initTOC() {
+    const sections = document.querySelectorAll('section[id]');
+    const tocItems = document.querySelectorAll('.toc-item');
+    const progressBar = document.getElementById('toc-progress-bar');
+
+    if (!sections.length || !tocItems.length) return;
+
+    function updateActiveState(id: string) {
+      let activeIndex = -1;
+      tocItems.forEach((item, index) => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-section') === id) {
+          item.classList.add('active');
+          activeIndex = index;
+        }
+      });
+
+      if (progressBar && activeIndex !== -1) {
+        const progress = (activeIndex / (tocItems.length - 1)) * 100;
+        progressBar.style.transform = `scaleY(${progress / 100})`;
+      }
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // Don't update if we're at the very bottom (handled by scroll listener)
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+      if (isAtBottom) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) updateActiveState(id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+
+    // Handle scroll to bottom
+    window.addEventListener('scroll', () => {
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+      if (isAtBottom) {
+        const lastId = tocItems[tocItems.length - 1].getAttribute('data-section');
+        if (lastId) updateActiveState(lastId);
+      }
+    });
+  }
+
+  // Initialize on load and after view transitions
+  initTOC();
+  document.addEventListener('astro:after-swap', initTOC);
+</script>

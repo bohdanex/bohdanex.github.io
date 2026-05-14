@@ -5,11 +5,13 @@ import Skills from '../components/Skills.astro';
 import Startups from '../components/Startups.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Education from '../components/Education.astro';
+import RD from '../components/RD.astro';
+import OSS from '../components/OSS.astro';
 import Footer from '../components/Footer.astro';
 import WebBlenderProject from '../components/projects/WebBlenderProject.astro';
 import WebDesignProject from '../components/projects/WebDesignProject.astro';
 import WebWalkthroughProject from '../components/projects/WebWalkthroughProject.astro';
-import { projects, startups, education, skills } from "../configs";
+import { projects, startups, education, skills, rdItems, ossItems } from "../configs";
 ---
 
 <Layout title="Bohdan | Full-Stack Software Engineer & System Architect">
@@ -19,31 +21,89 @@ import { projects, startups, education, skills } from "../configs";
 		<Startups startups={startups} />
 		
 		<section id="projects" class="mb-24">
-			<h2 class="text-3xl font-bold tracking-tight mb-8">Professional Projects</h2>
-			<div class="flex flex-col gap-4">
-				{projects.map(project => {
+			<h2 class="text-3xl font-bold tracking-tight mb-4">Professional Projects</h2>
+			<div class="flex flex-col gap-4" id="projects-container">
+				{projects.map((project, index) => {
 					const isBlender = project.name === "Web Mini-Blender";
 					const isDesign = project.name === "3D Property App (Architecture & Design Editor)";
 					const isWalkthrough = project.name === "3D Walkthrough & VR Presentation Creator";
-					const hasContent = isBlender || isDesign || isWalkthrough;
+					const isMigration = project.name === "Business Logic Migration & Infrastructure Refactoring";
+					const hasContent = isBlender || isDesign || isWalkthrough || isMigration;
+					const isHidden = index >= 5;
 					return (
-						<ProjectCard 
-							name={project.name}
-							description={project.description}
-							stack={project.stack}
-							links={project.links}
-							company={project.company}
-							hasContent={hasContent}
-							isNDA={project.isNDA}
-						>
-							{isBlender && <WebBlenderProject />}
-							{isDesign && <WebDesignProject />}
-							{isWalkthrough && <WebWalkthroughProject />}
-						</ProjectCard>
+						<div class={`project-wrapper ${isHidden ? 'hidden-project hidden' : ''}`} data-index={index}>
+							<ProjectCard 
+								name={project.name}
+								description={project.description}
+								stack={project.stack}
+								links={project.links}
+								company={project.company}
+								hasContent={hasContent}
+								isNDA={project.isNDA}
+							>
+								{isBlender && <WebBlenderProject />}
+								{isDesign && <WebDesignProject />}
+								{isWalkthrough && <WebWalkthroughProject />}
+								{isMigration && (
+									<ul class="list-disc list-inside space-y-3 text-sm text-slate-400">
+										<li>Designed a robust background processing engine, ensuring critical business operations run independently of user interface sessions.</li>
+										<li>Optimized system reliability and resource management by implementing efficient inter-process communication and service-level monitoring.</li>
+										<li>Refactored legacy C# code into a maintainable, testable service architecture, significantly reducing UI thread overhead and application crashes.</li>
+									</ul>
+								)}
+							</ProjectCard>
+						</div>
 					);
 				})}
 			</div>
+
+			{projects.length > 5 && (
+				<div class="flex justify-center mt-4" id="load-more-container">
+					<button
+						id="load-more-btn"
+						class="cursor-pointer group relative flex items-center gap-2 px-8 py-3 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 font-medium rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 active:scale-95 shadow-lg shadow-emerald-500/5"
+					>
+						<span>View More Projects</span>
+						<svg class="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+						</svg>
+					</button>
+				</div>
+			)}
 		</section>
+
+		<script>
+			function initLoadMore() {
+				const loadMoreBtn = document.getElementById('load-more-btn');
+				const container = document.getElementById('load-more-container');
+				
+				if (loadMoreBtn && container) {
+					loadMoreBtn.addEventListener('click', () => {
+						const hiddenProjects = document.querySelectorAll('.hidden-project');
+						hiddenProjects.forEach((project, i) => {
+							// Reveal with a slight stagger for aesthetic effect
+							setTimeout(() => {
+								project.classList.remove('hidden');
+								// Trigger a small animation if desired
+								project.classList.add('animate-fade-in');
+							}, i * 100);
+						});
+						
+						// Hide the button container
+						container.classList.add('hidden');
+					});
+				}
+			}
+
+			// Initialize
+			initLoadMore();
+			// Handle view transitions
+			document.addEventListener('astro:after-swap', initLoadMore);
+		</script>
+
+		<RD rdItems={rdItems} />
+
+		<OSS ossItems={ossItems} />
 
 		<Education education={education} />
 	</main>

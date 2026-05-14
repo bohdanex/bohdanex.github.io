@@ -1,0 +1,134 @@
+---
+import type { OSSItem } from '../types';
+
+interface Props {
+  ossItems: OSSItem[];
+}
+const { ossItems } = Astro.props;
+---
+<section id="open-source" class="mb-24">
+	<h2 class="text-3xl font-bold tracking-tight mb-4">Open Source Contributions</h2>
+	<div class="space-y-4">
+		{ossItems.map(item => (
+			<details class="oss-card group bg-white/1 border border-white/5 hover:border-white/10 rounded-xl transition-all duration-300 open:bg-white/2 [&_summary::-webkit-details-marker]:hidden">
+				<summary class="p-6 cursor-pointer list-none flex items-center justify-between gap-4">
+					<div class="flex items-center gap-4">
+						<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0 group-hover:bg-emerald-500/20 transition-colors">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-bold text-white leading-tight group-hover:text-emerald-400 transition-colors">{item.title}</h3>
+							<p class="text-sm text-slate-400 mt-1">{item.subtitle}</p>
+						</div>
+					</div>
+					<div class="chevron-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-colors shrink-0">
+						<svg class="w-5 h-5 transform transition-transform duration-500 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+						</svg>
+					</div>
+				</summary>
+				
+				<div class="expandable-content grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+					<div class="overflow-hidden">
+						<div class="p-6 pt-0 border-t border-white/5">
+							<p class="text-slate-300 text-[15px] leading-relaxed py-6">
+								{item.description}
+							</p>
+							
+							<div class="flex flex-wrap gap-4 mb-6">
+								<a href={item.githubUrl} target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 font-medium rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 active:scale-95">
+									<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+										<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+									</svg>
+									View on GitHub
+								</a>
+								<a href={item.nugetUrl} target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 font-medium rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 active:scale-95">
+									<svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor">
+										<path d="M16 0L1.4 8.4v15.2L16 32l14.6-8.4V8.4L16 0zm11.7 22.3L16 29l-11.7-6.7V9.7L16 3l11.7 6.7v12.6z"/>
+										<path d="M16 7l-8.4 4.8v9.6l8.4 4.8 8.4-4.8v-9.6L16 7zm5.6 13.1l-5.6 3.2-5.6-3.2v-6.4l5.6-3.2 5.6 3.2v6.4z"/>
+									</svg>
+									NuGet Package
+								</a>
+							</div>
+
+							<div class="flex flex-wrap gap-2 pt-6 border-t border-white/5">
+								{item.stack.map(tech => (
+									<span class="px-2 py-0.5 bg-white/5 text-slate-300 text-[10px] font-bold rounded uppercase tracking-wider border border-white/10">
+										{tech}
+									</span>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
+			</details>
+		))}
+	</div>
+</section>
+
+<style>
+	/* Print Requirements */
+	@media print {
+		details.oss-card {
+			display: block !important;
+			border: 1px solid #e5e7eb !important;
+			page-break-inside: avoid;
+			background-color: #f9fafb !important;
+		}
+		summary.p-6 {
+			cursor: default !important;
+		}
+		.chevron-icon {
+			display: none !important;
+		}
+		.expandable-content {
+			grid-template-rows: 1fr !important;
+			display: block !important;
+		}
+		.expandable-content > div {
+			overflow: visible !important;
+		}
+		.p-6.pt-0 {
+			border-top: 1px solid #e5e7eb !important;
+		}
+		.oss-card h3, .oss-card h4, .oss-card h5, .oss-card p, .oss-card span {
+			color: #111827 !important;
+		}
+		.oss-card a {
+			display: none !important;
+		}
+	}
+
+	details.oss-card.closing .expandable-content {
+		grid-template-rows: 0fr;
+	}
+	details.oss-card.closing svg {
+		transform: rotate(0deg);
+	}
+</style>
+
+<script>
+	function initOSSAccordion() {
+		document.querySelectorAll('details.oss-card').forEach(element => {
+			const details = element as HTMLDetailsElement;
+			const summary = details.querySelector('summary');
+			if (!summary) return;
+
+			summary.addEventListener('click', (e) => {
+				if (details.open) {
+					e.preventDefault();
+					details.classList.add('closing');
+					setTimeout(() => {
+						details.open = false;
+						details.classList.remove('closing');
+					}, 500);
+				}
+			});
+		});
+	}
+
+	initOSSAccordion();
+	document.addEventListener('astro:after-swap', initOSSAccordion);
+</script>

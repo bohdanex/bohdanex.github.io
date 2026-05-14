@@ -57,4 +57,12 @@ export const projects: Project[] = [
     company: undefined,
     links: []
   },
+  {
+    name: "Business Logic Migration & Infrastructure Refactoring",
+    description: "Led the strategic decoupling of core business logic from a legacy WPF desktop application, migrating it into a high-availability Windows Service.",
+    stack: [".NET", "Windows Services", "WPF", "Architectural Refactoring", "C#"],
+    company: { name: "Insiders", logo: null, url: null },
+    links: [],
+    isNDA: false
+  },
 ];

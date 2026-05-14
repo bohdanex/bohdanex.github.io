@@ -40,3 +40,21 @@ export interface CoreTechnology {
   name: string;
   icon: string;
 }
+
+export interface RDItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  metrics?: string;
+  capabilities?: string[];
+  stack: string[];
+}
+
+export interface OSSItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  githubUrl: string;
+  nugetUrl: string;
+  stack: string[];
+}

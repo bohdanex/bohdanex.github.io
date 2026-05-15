@@ -11,7 +11,10 @@ const { rdItems } = Astro.props;
 	<div class="space-y-4">
 		{rdItems.map(item => (
 			<details class="rd-card group bg-white/1 border border-white/5 hover:border-white/10 rounded-xl transition-all duration-300 open:bg-white/2 [&_summary::-webkit-details-marker]:hidden">
-				<summary class="p-6 cursor-pointer list-none flex items-center justify-between gap-4">
+				<summary 
+					data-umami-event={`RD Expanded: ${item.title}`}
+					class="p-6 cursor-pointer list-none flex items-center justify-between gap-4"
+				>
 					<div>
 						<h3 class="text-lg font-bold text-white leading-tight group-hover:text-emerald-400 transition-colors">{item.title}</h3>
 						<p class="text-sm text-slate-400 mt-1">{item.subtitle}</p>

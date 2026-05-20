@@ -6,6 +6,7 @@ interface Props {
   skills: SkillGroup[];
 }
 const { skills } = Astro.props;
+const principles = ["S.O.L.I.D.", "KISS", "YAGNI", "GRASP", "GoF Design Patterns"];
 ---
 <section id="expertise" class="mb-24">
 	<h2 class="text-3xl font-bold tracking-tight mb-4">Expertise</h2>
@@ -24,7 +25,7 @@ const { skills } = Astro.props;
 										<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
 									</svg>
 								) : (
-									<span class="w-1 h-1 rounded-full mr-3 ml-1 bg-slate-600 shrink-0"></span>
+									<span class="w-1 h-1 rounded-full mr-3 ml-1 shrink-0"></span>
 								)}
 								{name}
 							</li>
@@ -32,6 +33,16 @@ const { skills } = Astro.props;
 					})}
 				</ul>
 			</div>
+		))}
+	</div>
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-400">
+		{principles.map((principle, index) => (
+			<>
+				<span class="text-sm">{principle}</span>
+				{index < principles.length - 1 && (
+					<span class="hidden md:inline">·</span>
+				)}
+			</>
 		))}
 	</div>
 </section>

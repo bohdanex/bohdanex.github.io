@@ -4,12 +4,35 @@ export const skills: SkillGroup[] = [
   {
     category: "System Architecture",
     items: [
+      { name: "Microservices", highlight: true },
+      { name: "Modular Monolith", highlight: true },
       "Domain-Driven Design (DDD)",
       "Clean Architecture",
-      "CQRS",
-      "Microservices",
-      "Modular Monolith",
+      "Vertical Slice Architecture",
       "RESTful API Design",
+    ],
+  },
+  {
+    category: "Distributed Systems & Messaging",
+    items: [
+      "RabbitMQ",
+      "MassTransit",
+      "Saga Pattern",
+      "Outbox Pattern",
+      "Idempotency",
+      "Eventual Consistency",
+    ],
+  },
+  {
+    category: "Backend Stack",
+    items: [
+      { name: ".NET 8+", highlight: true },
+      "EF Core",
+      "Dapper",
+      "MediatR (CQRS)",
+      "Fluent Validation",
+      "Carter",
+      "NodeJS",
     ],
   },
   {
@@ -23,21 +46,13 @@ export const skills: SkillGroup[] = [
     ],
   },
   {
-    category: "Backend",
+    category: "DevOps & Infrastructure",
     items: [
-      { name: ".NET", highlight: true },
-      "NodeJS",
-      "NestJS",
-    ],
-  },
-  {
-    category: "Cloud & CI/CD",
-    items: [
-      "AWS",
-      { name: "Azure", highlight: true },
+      "Docker & Docker Compose",
+      "Azure",
       "GitHub Actions",
-      "Azure Pipelines",
-      "Docker",
+      "PostgreSQL",
+      "Redis",
     ],
   },
   {
@@ -48,16 +63,6 @@ export const skills: SkillGroup[] = [
       "MSSQL",
       "Redis",
       "MongoDB",
-    ],
-  },
-  {
-    category: "WebGL & 3D",
-    items: [
-      { name: "ThreeJS", highlight: true },
-      "WebGPU",
-      "VR",
-      "Custom Shaders",
-      "Linear Algebra",
     ],
   },
 ];

@@ -65,4 +65,22 @@ export const skills: SkillGroup[] = [
       "MongoDB",
     ],
   },
+  {
+    category: "Observability & Monitoring",
+    items: [
+      {
+        name: "OpenTelemetry (OTEL)",
+        highlight: true,
+        details: "Standardizing metrics, logs, and traces collection across microservices."
+      },
+      {
+        name: "Distributed Tracing",
+        details: "End-to-end request tracking with TraceId & SpanId across RabbitMQ and HTTP."
+      },
+      "Prometheus & Grafana",
+      "Structured Logging (Serilog)",
+      "Serilog & Seq",
+      "Health Checks",
+    ],
+  },
 ];

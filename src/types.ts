@@ -29,7 +29,7 @@ export interface EducationItem {
   details: EducationDetail[];
 }
 
-export type SkillItem = string | { name: string; highlight?: boolean };
+export type SkillItem = string | { name: string; highlight?: boolean; details?: string };
 
 export interface SkillGroup {
   category: string;

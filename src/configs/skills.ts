@@ -11,6 +11,7 @@ export const skills: SkillGroup[] = [
       "Vertical Slice Architecture",
       "RESTful API Design",
     ],
+    span: 2,
   },
   {
     category: "Distributed Systems & Messaging",
@@ -67,6 +68,7 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "Observability & Monitoring",
+    span: 2,
     items: [
       {
         name: "OpenTelemetry (OTEL)",

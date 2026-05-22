@@ -34,6 +34,7 @@ export type SkillItem = string | { name: string; highlight?: boolean; details?: 
 export interface SkillGroup {
   category: string;
   items: SkillItem[];
+  span?: number;
 }
 
 export interface CoreTechnology {

@@ -1,6 +1,6 @@
 # Bohdan Mykhats
 
-**.NET Full Stack Developer**
+**.NET Full-Stack Developer**
 
 ---
 
@@ -15,7 +15,7 @@
 
 ## Summary
 
-Senior Full-Stack Engineer and System Architect with 4+ years of software engineering experience. Focused on architecting high-performance web applications, scalable distributed backend systems, and interactive 3D graphics engines. Proven track record of leading development teams, translating business requirements into technical architectures, and delivering robust, cloud-native solutions.
+Full-Stack Engineer and System Architect with 4+ years of software engineering experience. Focused on architecting high-performance web applications, scalable distributed backend systems, and interactive 3D graphics engines. Proven track record of leading development teams, translating business requirements into technical architectures, and delivering robust, cloud-native solutions.
 
 ---
 
@@ -105,6 +105,7 @@ Senior Full-Stack Engineer and System Architect with 4+ years of software engine
 ## Experience
 
 ### **Medical App** (NDA)
+
 _Full-Stack Developer_ | Jul 2023 - Dec 2023
 
 - Maintained and optimized a secure healthcare platform, working with payment gateway systems.
@@ -113,12 +114,14 @@ _Full-Stack Developer_ | Jul 2023 - Dec 2023
 - Optimized MSSQL database by implementing complex indexing and query optimization, reducing report generation times by 30%.
 
 ### **Employee Management App** (NDA)
+
 _Frontend Engineer_ | Aug 2024 - Jan 2025
 
 - Engineered cross-platform desktop applications (Windows/macOS) using React Native for Desktop
 - Developed custom native UI components (cursor switching, printer, and others) and integrated OS-specific APIs for file handling and system notifications.
 
 ### **3D Property Editor & Walkthrough** (AEstAR x Propall)
+
 _Tech Lead / System Architect_ | April 2025 - April 2026
 
 - Designed and deployed a highly scalable cloud infrastructure on AWS (EC2, ECS, S3, Lambda, DynamoDB), supporting 2 independent frontend applications in production.
@@ -127,6 +130,7 @@ _Tech Lead / System Architect_ | April 2025 - April 2026
 - Led the technical architecture design and delegated implementation tasks to a development team.
 
 ### **Custom Geometry Engine** (AEstAR x Propall)
+
 _Lead Developer_ | Aug 2025 - Jan 2026
 
 - Engineered a custom WebGL/Three.js geometry engine from scratch, supporting complex topological operations (extrude, face inset, curve cuts, dome extrude).
@@ -135,6 +139,7 @@ _Lead Developer_ | Aug 2025 - Jan 2026
 - Engineered material group management to support multi-texturing and vertex color customization on custom 3D models.
 
 ### **Maplyx**
+
 _Tech Lead / System Architect_ | Feb 2026 - Present
 
 - Architected a cost-efficient real-time engine by migrating from Supabase to a self-hosted Centrifugo cluster, reducing potential messaging costs by 100% (approx. $2.50 per 1M messages).

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bohdan Mykhats - .NET Full Stack Developer CV</title>
+
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="90aeea66-2a92-44db-a550-d630394f61bc"></script>
+
+  <!-- Modern clean font - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <style>
+    /* CSS Print Optimization Rules */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Reset body margins and padding to standard layout boundaries */
+      html, body {
+        width: 210mm;
+        height: auto;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible;
+        background-color: white !important;
+        color: #0f172a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      .cv-page {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 8mm 10mm !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border: none !important;
+        position: relative !important;
+        background: white !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+
+      /* Reset any body spacing/margins introduced by space-y class on screen */
+      body > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .web-only {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-slate-800 min-h-screen py-8 flex flex-col items-center justify-start antialiased print:p-0 print:bg-white space-y-8 print:space-y-0">
+
+  <!-- Floating Web-Only Export Button -->
+  <div class="fixed top-4 right-4 z-50 web-only">
+    <button 
+      onclick="window.print()" 
+      class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-lg shadow-lg hover:shadow-emerald-500/20 transition-all duration-200"
+      id="print-btn"
+      aria-label="Export CV to PDF"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+      </svg>
+      Export CV to PDF
+    </button>
+  </div>
+
+  <!-- PAGE 1: Profile, Contacts, Skills, Summary, Experience -->
+  <div class="cv-page w-[210mm] h-[297mm] bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col justify-between print:rounded-none print:shadow-none relative">
+    
+    <!-- Top Emerald Header Banner (WCAG AA Compliant Contrast) -->
+    <header class="bg-emerald-950 text-emerald-50 px-8 py-3.5 flex justify-between items-center border-b-4 border-emerald-500">
+      <div>
+        <h1 class="text-3xl font-extrabold tracking-tight text-white">Bohdan Mykhats</h1>
+        <p class="text-emerald-450 text-emerald-400 font-bold text-sm mt-1 uppercase tracking-wider">.NET Full Stack Developer</p>
+      </div>
+      <div class="grid grid-cols-2 gap-x-6 gap-y-1.5 text-[11px] text-emerald-100 font-medium">
+        <!-- Phone -->
+        <a href="tel:+380960387434" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          +380 96 038 7434
+        </a>
+        <!-- Email -->
+        <a href="mailto:bodiamykhats@gmail.com" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          bodiamykhats@gmail.com
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/bohdan-mykhats-0b70302ba/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+          linkedin.com/in/bohdan
+        </a>
+        <!-- Portfolio -->
+        <a href="https://bohdanex.github.io" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          bohdanex.github.io
+        </a>
+      </div>
+    </header>
+
+    <!-- Page 1 Grid Content -->
+    <div class="grow grid grid-cols-[220px_1fr] gap-4 px-6 py-4">
+      
+      <!-- Left Column: Skills -->
+      <aside class="border-r border-slate-100 pr-5 flex flex-col justify-start space-y-6">
+        
+        <!-- Technical Stack -->
+        <section class="space-y-2">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">Skills</h2>
+          
+          <div class="space-y-3.5">
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Backend</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded text-[9px] font-semibold transition-all duration-150 cursor-default hover:bg-emerald-100/70 hover:border-emerald-400">.NET</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">NodeJS</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">NestJS</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">ExpressJS</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Frontend</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded text-[9px] font-semibold transition-all duration-150 cursor-default hover:bg-emerald-100/70 hover:border-emerald-400">Angular</span>
+                <span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded text-[9px] font-semibold transition-all duration-150 cursor-default hover:bg-emerald-100/70 hover:border-emerald-400">React</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">NextJS</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">LitJS</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">SolidJS</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">TS / JS</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">System Architecture</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Microservices</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Modular Monolith</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">DDD</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Clean Arch</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Vertical Slice</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">REST APIs</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Distributed Systems</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">RabbitMQ</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">MassTransit</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Saga Pattern</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Outbox</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Idempotency</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Consistency</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">DevOps</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Docker</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Docker Compose</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">AWS</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Azure</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Actions</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Databases</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Supabase</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">PostgreSQL</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Redis</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">MSSQL</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">MongoDB</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Observability & Monitoring</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">OTEL</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Tracing</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Prometheus</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Grafana</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Seq</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Jaeger</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">3D Graphics</h3>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">WebGL</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Three.js</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">WebXR (AR/VR)</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Linear Algebra</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Godot</span>
+                <span class="px-1.5 py-0.5 bg-slate-50 text-slate-700 border border-slate-200/60 rounded text-[9px] font-medium transition-all duration-150 cursor-default hover:border-emerald-300">Unity</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Languages</h3>
+              <p class="text-[10px] text-slate-700 font-semibold mt-0.5">English: <span class="font-medium text-slate-600">Upper-Intermediate (B2)</span></p>
+            </div>
+          </div>
+          
+        </section>
+        <section class="space-y-2">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">Education</h2>
+          <div class="space-y-2">
+            <div>
+              <h3 class="text-[10.5px] font-bold text-slate-900 leading-tight">Master's in Software Engineering</h3>
+              <p class="text-[9.5px] text-slate-500 font-medium">Uzhhorod National University — 2025</p>
+            </div>
+            <div>
+              <h3 class="text-[10.5px] font-bold text-slate-900 leading-tight">Bachelor's in Computer Engineering</h3>
+              <p class="text-[9.5px] text-slate-500 font-medium">Uzhhorod National University — 2024</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="space-y-2">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">Certifications</h2>
+          <div class="space-y-2">
+            <div>
+              <h3 class="text-[10.5px] font-bold text-slate-900 leading-tight">.NET Camp Graduate</h3>
+              <p class="text-[9.5px] text-slate-500 font-medium">Sigma Software University — 2023</p>
+            </div>
+            <div>
+              <h3 class="text-[10.5px] font-bold text-slate-900 leading-tight">Hackathon Tech Solutions</h3>
+              <p class="text-[9.5px] text-slate-500 font-medium">UCU Business School — 2026</p>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Right Column: Summary, Experience -->
+      <main class="space-y-2 flex flex-col justify-start">
+        
+        <!-- Summary -->
+        <section class="space-y-1.5">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">Summary</h2>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            A Full-Stack Engineer and System Architect with <strong>4+ years</strong> of software engineering experience. Focused on architecting high-performance web applications, scalable distributed backend systems, and interactive 3D graphics engines. Proven track record of leading development teams, translating business requirements into technical architectures, and delivering robust, cloud-native solutions.
+          </p>
+        </section>
+
+        <!-- Experience -->
+        <section class="space-y-2.5">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">Experience</h2>
+          <div class="space-y-2">
+            
+            <!-- Medical App -->
+            <div class="print-no-break space-y-0.5">
+              <h3 class="text-[11.5px] font-bold text-slate-900">Medical App (NDA)</h3>
+              <div class="flex justify-between items-baseline text-[9.5px] leading-tight">
+                <span class="text-emerald-700 font-bold">Junior Full-Stack Developer</span>
+                <span class="text-slate-500 font-semibold whitespace-nowrap">Jul 2023 – Dec 2023</span>
+              </div>
+              <ul class="list-disc pl-4 text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
+                <li>Maintained and optimized a secure healthcare platform, working with payment gateway systems.</li>
+                <li>Engineered scheduled background tasks and real-time notifications using SignalR and Quartz.NET.</li>
+                <li>Optimized MVC SEO-related app which allowed to load pages <strong>x2–x5</strong> times faster and improved SEO.</li>
+                <li>Optimized MSSQL database by implementing complex indexing, reducing report generation time.</li>
+              </ul>
+            </div>
+
+            <!-- Employee Management App -->
+            <div class="print-no-break space-y-0.5">
+              <h3 class="text-[11.5px] font-bold text-slate-900">Employee Management App (NDA)</h3>
+              <div class="flex justify-between items-baseline text-[9.5px] leading-tight">
+                <span class="text-emerald-700 font-bold">Middle Frontend Engineer</span>
+                <span class="text-slate-500 font-semibold whitespace-nowrap">Aug 2024 – Jan 2025</span>
+              </div>
+              <ul class="list-disc pl-4 text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
+                <li>Engineered cross-platform desktop applications (Windows/macOS) using React Native for Desktop.</li>
+                <li>Developed custom native UI components (cursor switching, printer, etc.) and integrated OS-specific APIs for file handling and system notifications.</li>
+              </ul>
+            </div>
+
+            <!-- 3D Property Editor -->
+            <div class="print-no-break space-y-0.5">
+              <h3 class="text-[11.5px] font-bold text-slate-900">3D Property Editor & Walkthrough (AEstAR x Propall)</h3>
+              <div class="flex justify-between items-baseline text-[9.5px] leading-tight">
+                <span class="text-emerald-700 font-bold">Senior Full-Stack Engineer</span>
+                <span class="text-slate-500 font-semibold whitespace-nowrap">April 2025 – April 2026</span>
+              </div>
+              <ul class="list-disc pl-4 text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
+                <li>Designed and deployed a highly scalable cloud infrastructure on AWS (EC2, ECS, S3, Lambda, DynamoDB), supporting <strong>2</strong> independent frontend applications.</li>
+                <li>Achieved a <strong>30%</strong> reduction in VRAM consumption and <strong>2x</strong> faster load times by implementing custom texture atlases, instanced meshes, and Level of Detail (LOD) in Three.js / WebGL.</li>
+                <li>Implemented real-time connection synchronization using ExpressJS and Socket.io, handling peak loads of concurrent user sessions.</li>
+                <li>Led the technical architecture design and delegated implementation tasks to a development team.</li>
+              </ul>
+            </div>
+
+            <!-- Custom Geometry Engine -->
+            <div class="print-no-break space-y-0.5">
+              <h3 class="text-[11.5px] font-bold text-slate-900">Custom Geometry Engine (AEstAR x Propall)</h3>
+              <div class="flex justify-between items-baseline text-[9.5px] leading-tight">
+                <span class="text-emerald-700 font-bold">Graphics Software Engineer</span>
+                <span class="text-slate-500 font-semibold whitespace-nowrap">Aug 2025 – Jan 2026</span>
+              </div>
+              <ul class="list-disc pl-4 text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
+                <li>Engineered a custom WebGL/Three.js geometry engine from scratch, supporting complex topological operations (extrude, face inset, curve cuts, dome extrude).</li>
+                <li>Designed and implemented linear algebra-based algorithms for automated UV mapping and normal calculations, optimizing vertex data for custom geometry.</li>
+                <li>Implemented a structured Command Pattern that handles undo/redo operations with <strong>sub-10ms</strong> state restoration.</li>
+              </ul>
+            </div>
+
+            <!-- Maplyx -->
+            <div class="print-no-break space-y-0.5">
+              <h3 class="text-[11.5px] font-bold text-slate-900">Maplyx</h3>
+              <div class="flex justify-between items-baseline text-[9.5px] leading-tight">
+                <span class="text-emerald-700 font-bold">Solo Founder & System Architect</span>
+                <span class="text-slate-500 font-semibold whitespace-nowrap">Feb 2026 – Present</span>
+              </div>
+              <ul class="list-disc pl-4 text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
+                <li>Architected a cost-efficient real-time engine by migrating from Supabase to a self-hosted Centrifugo cluster, reducing messaging costs by <strong>100%</strong> (~<strong>$2.50</strong> per 1M messages).</li>
+                <li>Engineered high-frequency synchronization for 3D mind-map collaboration, enabling the system to scale to <strong>millions</strong> of events.</li>
+                <li>Implemented real-time presence and cursor tracking with Centrifugo, achieving high throughput and <strong>sub-50ms</strong> latency.</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+      
+    </div>
+  </div>
+
+  <!-- PAGE 2: Education, Certifications, R&D, Open Source -->
+  <div class="cv-page w-[210mm] h-[297mm] bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col justify-between print:rounded-none print:shadow-none relative">
+    
+    <!-- Top Emerald Header Banner (WCAG AA Compliant Contrast) -->
+    <header class="bg-emerald-950 text-emerald-50 px-8 py-3.5 flex justify-between items-center border-b-4 border-emerald-500">
+      <div>
+        <h1 class="text-3xl font-extrabold tracking-tight text-white">Bohdan Mykhats</h1>
+        <p class="text-emerald-450 text-emerald-400 font-bold text-sm mt-1 uppercase tracking-wider">.NET Full Stack Developer</p>
+      </div>
+      <div class="grid grid-cols-2 gap-x-6 gap-y-1.5 text-[11px] text-emerald-100 font-medium">
+        <!-- Phone -->
+        <a href="tel:+380960387434" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          +380 96 038 7434
+        </a>
+        <!-- Email -->
+        <a href="mailto:bodiamykhats@gmail.com" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          bodiamykhats@gmail.com
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/bohdan-mykhats-0b70302ba/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+          linkedin.com/in/bohdan
+        </a>
+        <!-- Portfolio -->
+        <a href="https://bohdanex.github.io" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          bohdanex.github.io
+        </a>
+      </div>
+    </header>
+
+    <!-- Page 2 Grid Content -->
+    <div class="grow grid grid-cols-12 gap-2 px-8 py-5">
+      
+      <!-- Main Content: R&D & Open Source -->
+      <main class="col-span-12 space-y-5 flex flex-col justify-start">
+        
+        <!-- R&D & High-Performance Engineering -->
+        <section class="space-y-2">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">R&D & High-Performance Engineering</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="print-no-break space-y-1">
+              <h3 class="text-[10.5px] font-bold text-slate-900">A* Pathfinding Implementation</h3>
+              <p class="text-[10px] text-slate-600 leading-relaxed">
+                Engineered a high-performance pathfinding algorithm utilizing Unity's DOTS and Burst Compiler, achieving a <strong>37.5x</strong> performance speedup.
+              </p>
+            </div>
+            <div class="print-no-break space-y-1">
+              <h3 class="text-[10.5px] font-bold text-slate-900">Hardware-Accelerated Signal Processing (.NET)</h3>
+              <p class="text-[10px] text-slate-600 leading-relaxed">
+                Developed a .NET application implementing FFT, wavelets, and DirectX/OpenCL parallelization with active resource tracking.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Open Source Contributions -->
+        <section class="space-y-2">
+          <h2 class="text-[12px] font-bold uppercase tracking-wider text-emerald-800 border-b border-emerald-500/20 pb-1">Open Source Contributions</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="print-no-break space-y-1">
+              <h3 class="text-[10.5px] font-bold text-slate-900 flex justify-between items-center">
+                <span>.NET Feature Management</span>
+                <a href="https://github.com/bohdanex/Feature-Management-For-Minimal-API" target="_blank" rel="noopener noreferrer" class="text-[9.5px] text-emerald-700 hover:underline font-semibold flex items-center gap-0.5">
+                  View Repo
+                  <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              </h3>
+              <p class="text-[10px] text-slate-600 leading-relaxed">
+                Developed and published a feature toggling package specifically designed for .NET Minimal APIs.
+              </p>
+            </div>
+            <div class="print-no-break space-y-1">
+              <h3 class="text-[10.5px] font-bold text-slate-900 flex justify-between items-center">
+                <span>.NET Result Pattern Handler</span>
+                <a href="https://github.com/bohdanex/Result-Pattern-For-Minimal-API" target="_blank" rel="noopener noreferrer" class="text-[9.5px] text-emerald-700 hover:underline font-semibold flex items-center gap-0.5">
+                  View Repo
+                  <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              </h3>
+              <p class="text-[10px] text-slate-600 leading-relaxed">
+                Created a generic "Result Pattern" package offering a unified handler for response success/error states.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

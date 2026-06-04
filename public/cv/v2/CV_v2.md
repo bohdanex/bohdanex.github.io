@@ -15,7 +15,7 @@
 
 ## Summary
 
-Full-Stack Engineer and System Architect with 4+ years of software engineering experience. Focused on architecting high-performance web applications, scalable distributed backend systems, and interactive 3D graphics engines. Proven track record of leading development teams, translating business requirements into technical architectures, and delivering robust, cloud-native solutions.
+Full-Stack Engineer and System Architect with 5+ years of software engineering experience. Focused on architecting high-performance web applications, scalable distributed backend systems, and interactive 3D graphics engines. Proven track record of leading development teams, translating business requirements into technical architectures, and delivering robust, cloud-native solutions.
 
 ---
 
